@@ -27,16 +27,4 @@ jobs:
           echo add other actions to build,
           echo test, and deploy your project
 
-  self-host:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
 
-      - name: Check user (CMD)
-        shell: cmd
-        run: whoami
-
-      - name: Show file tree (CMD)
-        shell: cmd
-        run: tree /F
