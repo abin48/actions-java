@@ -27,9 +27,13 @@ jobs:
           echo ${{runner.environment}}
           echo ${{secrets.PASSWORD}}
           echo ${{github.ref}}
-          echo ${{github.event}}
           echo ${{github.repository}}
           echo ${{job.status}}
+
+          echo ${{github.event.after}}
+          echo ${{github.event.before}}
+          echo ${{github.event.commits}}
+          echo ${{github.event.compare}}
 
 
   prod_check:
@@ -42,4 +46,3 @@ jobs:
           echo Arch: ${{ runner.arch }}
           echo Temp folder: ${{ runner.temp }}
 
-          
