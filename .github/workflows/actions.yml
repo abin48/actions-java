@@ -12,5 +12,7 @@ jobs:
   report-url-sh:
     runs-on: self-hosted
     steps:
-    - name: Show GitHub context
-      run: echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      - name: Show GitHub context (Bash)
+        shell: bash
+        run: |
+          echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
