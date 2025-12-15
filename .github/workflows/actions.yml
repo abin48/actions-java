@@ -54,7 +54,7 @@ jobs:
       - name: Download candidate artifacts
         uses: actions/download-artifact@v5
         with:
-          name: archieve
+          name: ./archieve
 
       - name: prep release
         uses: softprops/action-gh-release@v2
