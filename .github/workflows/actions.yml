@@ -21,10 +21,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: build with gradle
-        run: ./gradlew build
+        run: gradlew build
 
-      - name: upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: archieve.zip
-          path: build/libs
+      # - name: upload artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: archieve.zip
+      #     path: build/libs
