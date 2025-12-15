@@ -50,7 +50,7 @@ jobs:
       
     steps:
       - name: Download candidate artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v5
         with:
           name: archieve.zip
 
