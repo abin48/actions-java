@@ -9,43 +9,6 @@ env:
   PIPE: cicd
 
 jobs:
-  check:
-    runs-on: self-hosted
-
-    env:
-      STAGE: JOB
-
-    steps:
-      - name: step level env
-        env:
-          stage: steps
-        run: | 
-          echo $env:STAGE
-          echo $env:stage
-          echo ${{runner.name}}
-          echo ${{runner.os}}
-          echo ${{runner.environment}}
-          echo ${{secrets.PASSWORD}}
-          echo ${{github.ref}}
-          echo ${{github.repository}}
-          echo ${{job.status}}
-
-          echo ${{github.event.after}}
-          echo ${{github.event.before}}
-          echo ${{github.event.commits}}
-          echo ${{github.event.compare}}
-
-
-  prod_check:
-    if: ${{github.ref == 'refs/heads/main'}}
-    runs-on: self-hosted
-    steps:
-      - run: |
-          echo Runner Name: ${{ runner.name }}
-          echo OS: ${{ runner.os }}
-          echo Arch: ${{ runner.arch }}
-          echo Temp folder: ${{ runner.temp }}
-
   report-url:
     runs-on: self-hosted
     steps:
