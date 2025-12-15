@@ -1,35 +1,29 @@
 plugins {
-id 'java'
-id 'application'
+    id 'java'
+    id 'application'
 }
-
 
 group = 'com.example'
 version = '1.0.0'
 
-
 java {
-toolchain {
-languageVersion = JavaLanguageVersion.of(11)
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
 }
-}
-
 
 application {
-mainClass = 'com.example.app.App'
+    mainClass = 'com.example.app.App'
 }
-
 
 repositories {
-mavenCentral()
+    mavenCentral()
 }
-
 
 dependencies {
-testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 }
 
-
 test {
-useJUnitPlatform()
+    useJUnitPlatform()
 }
