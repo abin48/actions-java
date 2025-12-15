@@ -46,3 +46,15 @@ jobs:
           echo Arch: ${{ runner.arch }}
           echo Temp folder: ${{ runner.temp }}
 
+  report-url:
+    runs-on: self-hosted
+    steps:
+    - name: Show GitHub context
+      run: |
+        echo "Workflow: ${{ github.workflow }}"
+        echo "Repo: ${{ github.repository }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        echo "Actor: ${{ github.actor }}"
+        echo "Runner OS: $RUNNER_OS"
+        echo "Runner Name: $RUNNER_NAME"
