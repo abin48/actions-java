@@ -24,10 +24,14 @@ jobs:
           echo $env:stage
           echo ${{runner.name}}
           echo ${{runner.os}}
+          echo ${{runner.environment}}
+          echo ${{secrets.PASSWORD}}
+          echo ${{github.ref}}
+          echo ${{github.repository}}
+          echo ${{job.status}}
 
   prod_check:
     if: ${{github.ref == 'refs/heads/main'}}
     runs-on: self-hosted
     steps:
       - run: echo "deploy on self-hosted"
-      
