@@ -42,4 +42,10 @@ jobs:
           echo Arch: ${{ runner.arch }}
           echo Temp folder: ${{ runner.temp }}
 
-          
+      - run: |
+          if ["$RUNNER_OS" = "Windows"]; then
+            echo "windows runner"
+          else
+            echo "Non-windows runner: $RUNNER_OS"
+          fi
+        shell: bash
