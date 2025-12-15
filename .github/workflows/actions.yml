@@ -27,8 +27,10 @@ jobs:
           echo ${{runner.environment}}
           echo ${{secrets.PASSWORD}}
           echo ${{github.ref}}
+          echo ${{github.event}}
           echo ${{github.repository}}
           echo ${{job.status}}
+
 
   prod_check:
     if: ${{github.ref == 'refs/heads/main'}}
