@@ -14,10 +14,4 @@ jobs:
     steps:
     - name: Show GitHub context
       run: |
-        echo "REST API URL: $GITHUB_API_URL"
-        echo "GraphQL URL: $GITHUB_GRAPHQL_URL"
-        echo "Server URL: $GITHUB_SERVER_URL"
-        echo "Repo checkout path: $GITHUB_WORKSPACE"
-        echo "Event payload: $GITHUB_EVENT_PATH"
-
-        
+        echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
