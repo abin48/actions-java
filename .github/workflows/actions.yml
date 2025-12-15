@@ -20,8 +20,8 @@ jobs:
         env:
           stage: steps
         run: | 
-          echo $STAGE
-          echo $stage
+          echo $env:STAGE
+          echo $env:stage
           echo ${{runner.name}}
           echo ${{runner.os}}
 
@@ -30,3 +30,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: echo "deploy on self-hosted"
+      
