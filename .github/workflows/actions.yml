@@ -36,4 +36,10 @@ jobs:
     if: ${{github.ref == 'refs/heads/main'}}
     runs-on: self-hosted
     steps:
-      - run: echo "deploy on self-hosted"
+      - run: |
+          echo Runner Name: ${{ runner.name }}
+          echo OS: ${{ runner.os }}
+          echo Arch: ${{ runner.arch }}
+          echo Temp folder: ${{ runner.temp }}
+
+          
