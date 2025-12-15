@@ -22,7 +22,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
       
       - name: List current directory (check files)
-        run: ls -la
+        run: |
+          gradle wrapper
+          ls -la
+
 
       # - name: Build with Gradle
       #   run: ./gradlew build
