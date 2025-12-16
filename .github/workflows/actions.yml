@@ -7,9 +7,11 @@ on:
         description: "message to print"
         required: true
 
+
 jobs:
   demo:
     runs-on: ubuntu-latest
+    if: ${{ inputs.message }}
     steps:
       - name: print input
         run: echo "${{ inputs.message }}"
