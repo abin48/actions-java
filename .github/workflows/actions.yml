@@ -1,14 +1,11 @@
 name: simple input simple
 
 on:
-  push:
-    branches: [ main ]
-
   workflow_dispatch:
     inputs:
       message:
         description: "message to print"
-        required: True
+        required: true
 
 jobs:
   demo:
