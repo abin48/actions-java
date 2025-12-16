@@ -6,7 +6,16 @@ on:
       message:
         description: "message to print"
         required: true
-
+      age:
+        description: "enter your age"
+        required: false
+      version:
+        description: "node verson to setup"
+        type: number
+      env:
+        description: "sth with env"
+        type: environment
+        required: true
 
 jobs:
   demo:
@@ -15,3 +24,10 @@ jobs:
     steps:
       - name: print input
         run: echo "${{ inputs.message }}"
+
+      - name: print inputs
+        run: |
+          echo "${{inputs.age}}"
+          echo "${{inputs.version}}"
+          echo "${{inputs.env}}"
+
