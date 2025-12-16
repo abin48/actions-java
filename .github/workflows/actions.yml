@@ -12,7 +12,7 @@ on:
 
 jobs:
   demo:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: print input
         run: echo "${{ inputs.message }}"
