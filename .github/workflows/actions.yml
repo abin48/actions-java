@@ -6,33 +6,25 @@ on:
       message:
         description: "message to print"
         required: true
-      age:
-        description: "enter your age"
-        required: false
-      version:
+
+      node-version:
         description: "node verson to setup"
         type: number
-      env:
-        description: "sth with env"
-        type: environment
-        required: true
+
 
 jobs:
   demo:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.env }}
     steps:
       - name: print input
         run: echo "${{ inputs.message }}"
 
       - name: print inputs
         run: |
-          echo "${{inputs.age}}"
-          echo "${{inputs.version}}"
-          echo "${{inputs.env}}"
-          echo "${{vars.DEV_VERSION}}"
+          echo "${{inputs.node-version}}"
 
   call-build:
     uses: ./.github/workflows/reusable.yml
     with: 
-      node-version: 18
+      node-version: ${{inputs.node-version}}
+
