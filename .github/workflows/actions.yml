@@ -8,19 +8,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      build-version: ${{steps.set_version.outputs.version}}
     steps:
-      - name: set version
+      - name: set node version
         id: set_version
         run: |
-          echo "version=1.2.3" >> $GITHUB_OUTPUT
+          echo "version=22" >> $GITHUB_OUTPUT
 
-      - name: hello world
-        id: hw
-        run: |
-          echo "hello=world" >> $GITHUB_OUTPUT
-    
       - name: access version
         run: |
-          echo "this version is 
+          echo "node version is 
           ${{steps.set_version.outputs.version}}"
-          echo ${{steps.hw.outputs.hello}}
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: get version
+        run: |
+          echo "node version is ${{needs.build.outputs.build-version}}
+
+      - name: setup-node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: ${{needs.build.outputs.build-version}}
+
+          
