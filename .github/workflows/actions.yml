@@ -11,8 +11,16 @@ jobs:
     steps:
       - name: set version
         id: set_version
-        run: echo "version=1.2.3" >> $GITHUB_OUTPUT
+        run: |
+          echo "version=1.2.3" >> $GITHUB_OUTPUT
+
+      - name: hello world
+        id: hw
+        run: |
+          echo "hello=world" >> $GITHUB_OUTPUT
     
       - name: access version
-        run: echo "this version is \
-         ${{steps.set_version.outputs.version}}"
+        run: |
+          echo "this version is 
+          ${{steps.set_version.outputs.version}}"
+          echo ${{steps.hw.outputs.hello}}
