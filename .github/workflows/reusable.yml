@@ -19,6 +19,7 @@ jobs:
       - name: display inputs available
         run: |
           echo '${{ toJson(inputs) }}'
+          echo '${{inputs.message}}'
 
       - name: show node version
         run: node -v
