@@ -9,7 +9,9 @@ on:
 
       node-version:
         description: "node verson to setup"
-        type: number
+        type: choice
+        default: "20"
+        options: ["18", "20", "22"]
 
 
 jobs:
