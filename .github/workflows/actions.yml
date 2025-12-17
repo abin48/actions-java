@@ -1,32 +1,18 @@
 name: simple input simple
 
 on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: "message to print"
-        required: true
-
-      node-version:
-        description: "node verson to setup"
-        type: choice
-        default: "20"
-        options: ["18", "20", "22"]
+  push:
+    branches: [main]
 
 
 jobs:
-  demo:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: print input
-        run: echo "${{ inputs.message }}"
-
-      - name: print inputs
-        run: |
-          echo "${{inputs.node-version}}"
-
-  call-build:
-    uses: ./.github/workflows/reusable.yml
-    with: 
-      node-version: ${{inputs.node-version}}
-
+      - name: set version
+        id: set_version
+        run: echo "version=1.2.3" >> $GITHUB_OUTPUT
+    
+      - name: access version
+        run: echo "this version is \
+         ${{steps.set_version.outputs.version}}"
