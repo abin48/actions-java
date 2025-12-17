@@ -3,29 +3,36 @@ name: simple input simple
 on:
   workflow_dispatch:
     inputs:
-      title:
-        description: "issue title"
+      message:
+        description: "message to print"
         required: true
-      body:
-        description: "issue body"
+      age:
+        description: "enter your age"
+        required: false
+      version:
+        description: "node verson to setup"
+        type: number
+      env:
+        description: "sth with env"
+        type: environment
         required: true
 
 jobs:
-  create_issue_on_failure:
+  demo:
     runs-on: ubuntu-latest
-    permissions: 
-      issues: write
-
+    environment: ${{ inputs.env }}
     steps:
-      - name: create issue using REST API
+      - name: print input
+        run: echo "${{ inputs.message }}"
+
+      - name: print inputs
         run: |
-          curl \
-          --request POST \
-          --url https://api.github.com/repos/${{github.repository}}/issues \
-          --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          --header 'content-type: application/json' \
-          --data '{
-          "title": "failure: ${{inputs.title}}",
-          "body" : "details: ${{inputs.body}}"
-          }' \
-          --fail
+          echo "${{inputs.age}}"
+          echo "${{inputs.version}}"
+          echo "${{inputs.env}}"
+          echo "${{vars.DEV_VERSION}}"
+
+  call-build:
+    uses: ./.github/workflows/reusable.yml
+    with: 
+      node-version: 18
