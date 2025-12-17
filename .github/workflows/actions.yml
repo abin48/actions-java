@@ -8,26 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      build-version: ${{steps.set_version.outputs.version}}
+
     steps:
-      - name: set node version
-        id: set_version
-        run: |
-          echo "version=22" >> $GITHUB_OUTPUT
+      - run: mkdir -p /artifact
 
-  test:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - name: get version
-        run: |
-          echo "node version is ${{needs.build.outputs.build-version}}"
+      - run: echo hello > /artifact/world.txt
 
-      - name: setup-node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: ${{needs.build.outputs.build-version}}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: artifactfile
+          path: /artifact/world.txt
 
-      - name: check
-        run: node -v
+          
