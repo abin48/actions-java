@@ -13,14 +13,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: setup node.js
+        id: node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      
-      - name: get node version
-        id: node
-        run: |
-          echo "version=$(node -v)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v4
         with:
