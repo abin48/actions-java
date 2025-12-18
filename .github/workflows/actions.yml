@@ -15,3 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "bug label added!"
+  
+  issue-close:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo " ${{github.event.issue.comments}} ${{github.event.issue.closed_at}}"
+
+      
