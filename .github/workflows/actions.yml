@@ -1,8 +1,13 @@
 name: simple input simple
 
 on:
+  label:
+    types:
+      - created
+      
   issues:
-    types: [opened,labeled]
+    types: [opened,labeled,closed]
+  
 
 jobs:
   run_if_bug:
