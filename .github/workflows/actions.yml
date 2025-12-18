@@ -1,10 +1,6 @@
 name: simple input simple
 
-on:
-  label:
-    types:
-      - created
-      
+on:      
   issues:
     types: [opened,labeled,closed]
   
@@ -21,4 +17,3 @@ jobs:
     steps:
       - run: echo " ${{github.event.issue.comments}} ${{github.event.issue.closed_at}}"
 
-      
