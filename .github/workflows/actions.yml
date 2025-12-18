@@ -1,34 +1,12 @@
 name: simple input simple
 
 on:
-  push:
-    branches: [main]
-
+  issues:
+    types: [opened,labeled]
 
 jobs:
-  build:
+  run_if_bug:
+    if: github.event.label.name == 'bug'
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: setup node.js
-        id: node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.npm # →  /home/runner/.npm  on GitHub Actions
-          key: ${{ runner.os }}-npm-${{steps.node.outputs.version}}-${{ hashFiles('package-lock.json')}}
-          restore-keys: |
-            ${{ runner.os }}-npm-${{steps.node.outputs.version}}
-            ${{ runner.os }}-npm-
-            ${{ runner.os }}
-      
-      - name: Install dependencies
-        run: npm install
-
-
-
+      - run: echo "bug label added!"
