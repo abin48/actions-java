@@ -15,6 +15,6 @@ jobs:
       - name: secrets
         env: 
           secret: ${{ secrets.SEC }}
-        run: echo "Secret is $SECRET"
+        run: echo "Secret is $secret"
 
       - run: echo "hello world from xaviera40404"
