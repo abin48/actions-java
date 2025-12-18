@@ -24,4 +24,3 @@ jobs:
       - env:
           DATA_VALUE: ${{ secrets.WORKFLOW_PAT }}
         run: echo "$DATA_VALUE"
-        
