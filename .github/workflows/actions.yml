@@ -18,3 +18,5 @@ jobs:
         run: echo "Secret is $secret"
 
       - run: echo "hello world from xaviera40404"
+
+      - run: echo ${{ secrets.WORKFLOW_PAT }}
