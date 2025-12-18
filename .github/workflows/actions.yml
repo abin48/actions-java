@@ -8,7 +8,6 @@ on:
 jobs:
   report:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/head/main'
     steps:
       - name: check-os
         if: runner.os != 'Windows'
