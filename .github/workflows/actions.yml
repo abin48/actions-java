@@ -6,21 +6,16 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [18, 20]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: code
-        run: echo hello world"
+      - name: Display matrix and index
+        run: |
+          echo "running on ${{matrix.os}} with node.js ${{matrix.node}} "
+          echo "this is matrix job #${{strategy.job-index}}"
 
-      - name: secrets
-        env: 
-          secret: ${{ secrets.SEC }}
-        run: echo "Secret is $secret"
-
-      - run: echo "hello world from xaviera40404"
-
-      - run: echo ${{ secrets.WORKFLOW_PAT }}
-
-      - env:
-          DATA_VALUE: ${{ secrets.SCRIPT }}
-        run: echo "$DATA_VALUE"
+          
